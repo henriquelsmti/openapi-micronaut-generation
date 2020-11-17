@@ -2,6 +2,7 @@ package com.example
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.MediaType
+import io.micronaut.http.annotation.Body
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.Post
@@ -32,7 +33,7 @@ class ArraySchemaExempleController {
 			)
 	)
 	@Post('/single')
-	Single<List<Bacon>> singleExemple(Single<List<Bacon>> single) {
+	Single<List<Bacon>> singleExemple(@Body Single<List<Bacon>> single) {
 		return single.map((it) -> it + [new Bacon(name: 'banana')])
 	}
 
@@ -51,7 +52,7 @@ class ArraySchemaExempleController {
 			)
 	)
 	@Post('/observable')
-	Observable<List<String>> observableExemple(Observable<List<String>> observable) {
+	Observable<List<String>> observableExemple(@Body Observable<List<String>> observable) {
 		return observable.map((it) -> it + [new Bacon(name: 'banana')])
 	}
 
